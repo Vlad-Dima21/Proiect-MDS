@@ -13,3 +13,5 @@ cum să economisească bani și să observe ce produse au cea mai mare pondere �
    procentul pe care îl reprezintă din profitul total;
  * Ca manager de magazin, vreau ca utilizatorii să aleagă magazinul de la care au cumpărat produsele,
    pentru a ști care obține cel mai mare profit;
+ * Ca utilizator, vreau să îmi pot asocia un alt cont (partener), astfel încât cumpărăturile noastre să fie
+   contorizate la un loc;
