@@ -10,4 +10,29 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="user_settings">Account</string>
+    <string name="theme">Theme</string>
+    <string name="bitBucket">BitBucket</string>
+    <string name="Jira">Jira</string>
+    <string name="color">Status Bar Color</string>
+
+    <!-- Messages Preferences -->
+    <string name="username">Your username</string>
+    <string name="email">Your email</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="dark_mode">Dark Mode</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navBar">Navigation Bar</string>
+    <string name="statBar">Status Bar</string>
 </resources>
