@@ -1,4 +1,4 @@
-package com.example.proiectmds.ui.gallery;
+package com.example.proiectmds.ui.budget;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,24 +10,27 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.proiectmds.databinding.FragmentGalleryBinding;
+import com.example.proiectmds.databinding.FragmentBudgetBinding;
 
-public class GalleryFragment extends Fragment {
+public class BudgetFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private FragmentBudgetBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
+        BudgetViewModel budgetViewModel =
+                new ViewModelProvider(this).get(BudgetViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = FragmentBudgetBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textBudget;
+        budgetViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
+
+
+
 
     @Override
     public void onDestroyView() {

@@ -8,7 +8,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_budget">Budget</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
@@ -35,4 +35,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navBar">Navigation Bar</string>
     <string name="statBar">Status Bar</string>
+    <string name="budget2">Budget</string>
+    <string name="budget">Budget</string>
+    <string name="spending">Spending</string>
 </resources>
