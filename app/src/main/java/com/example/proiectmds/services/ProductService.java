@@ -8,35 +8,58 @@ import com.example.proiectmds.domain.Product;
 import com.example.proiectmds.helpers.ProductTuple;
 import com.example.proiectmds.persistence.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ProductService {
     private ProductRepository productRepository = new ProductRepository();
-    static private HashMap<String, Integer> productSales = new HashMap<String, Integer>();
+    private static List<HashMap<String, Integer>> productSalesForClients;
+    private static List<HashMap<String, Integer>> productSalesForManagers;
+
     private static int totalProfit = 0;
 
-    public Product selectProductById(int id) {
-    /* this method returns the required product while also
+    static {
+        productSalesForClients = IntStream.range(0, 51).
+                mapToObj(HashMap<String, Integer>::new).
+                collect(Collectors.toList());
+
+        productSalesForManagers = IntStream.range(0, 11).
+                mapToObj(HashMap<String, Integer>::new).
+                collect(Collectors.toList());
+    }
+
+    /** this method returns the required product while also
       updating the number of times it has been bought in total
      */
-        Product product = productRepository.get(id);
-        productSales.merge(product.getName(), 1, Integer::sum);
+    public Product selectProductById(int clientId, int managerId, int productId) {
+        Product product = productRepository.get(productId);
+        HashMap<String, Integer> clientHash = productSalesForClients.get(clientId);
+        clientHash.merge(product.getName(), 1, Integer::sum);
+
+        HashMap<String, Integer> managerHash = productSalesForManagers.get(managerId);
+        managerHash.merge(product.getName(), 1, Integer::sum);
+
         totalProfit += product.getPrice();
         return product;
     }
 
-    public ProductTuple[] bestSellingProducts() {
-    /*
-    returns the 3 best selling products in the store with their corresponding percentages
+    /**
+    returns the 3 best selling products with their corresponding percentages
      */
+    public ProductTuple[] bestSellingProducts(int managerId) {
         ProductTuple[] bsp = new ProductTuple[3];
 
         Map.Entry<String, Integer> maxEntry1 = null;
         Map.Entry<String, Integer> maxEntry2 = null;
         Map.Entry<String, Integer> maxEntry3 = null;
 
-        for (Map.Entry<String, Integer> entry : productSales.entrySet()) {
+        HashMap<String, Integer> managerHash = productSalesForManagers.get(managerId);
+
+        for (Map.Entry<String, Integer> entry : managerHash.entrySet()) {
             if (maxEntry1 == null || entry.getValue() > maxEntry1.getValue()) {
                 maxEntry3 = maxEntry2;
                 maxEntry2 = maxEntry1;
