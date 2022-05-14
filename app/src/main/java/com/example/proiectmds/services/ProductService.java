@@ -20,7 +20,7 @@ public class ProductService {
     private static List<HashMap<String, Integer>> productSalesForClients;
     private static List<HashMap<String, Integer>> productSalesForManagers;
 
-    private static int totalProfit = 0;
+    private static HashMap<Integer, Double> totalProfit = new HashMap<>();
 
     static {
         productSalesForClients = IntStream.range(0, 51).
@@ -43,7 +43,8 @@ public class ProductService {
         HashMap<String, Integer> managerHash = productSalesForManagers.get(managerId);
         managerHash.merge(product.getName(), 1, Integer::sum);
 
-        totalProfit += product.getPrice();
+//        totalProfit += product.getPrice();
+        totalProfit.merge(managerId, product.getPrice(), Double::sum);
         return product;
     }
 
@@ -93,6 +94,31 @@ public class ProductService {
             return bsp;
         }
         return bsp;
+    }
+
+    /**
+     * Finds the product the client has bought the most
+     * @param clientId
+     * @return the product if it exists, otherwise null
+     */
+    public Product getFavouriteProduct(int clientId) {
+        String nameOfBestSellingProduct = "";
+        int salesNumberOfBestSellingProduct = 0;
+        HashMap<String, Integer> clientHash = productSalesForClients.get(clientId);
+
+        for (Map.Entry<String, Integer> entry : clientHash.entrySet()) {
+            if (entry.getValue() > salesNumberOfBestSellingProduct) {
+                nameOfBestSellingProduct = entry.getKey();
+                salesNumberOfBestSellingProduct = entry.getValue();
+            }
+        }
+
+        if (salesNumberOfBestSellingProduct > 0) {
+            return productRepository.getByName(nameOfBestSellingProduct);
+        }
+        else {
+            return null;
+        }
     }
 
 }
