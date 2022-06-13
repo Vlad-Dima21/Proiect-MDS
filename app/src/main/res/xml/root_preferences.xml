@@ -3,13 +3,13 @@
     <PreferenceCategory app:title="@string/user_settings">
 
         <EditTextPreference
-            app:key="username"
-            app:title="@string/username"
+            app:key="email"
+            app:title="@string/email"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            app:key="email"
-            app:title="@string/email"
+            app:key="password"
+            app:title="@string/username"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
@@ -18,7 +18,7 @@
 
         <SwitchPreferenceCompat
             app:key="dark"
-            app:summary="Switches between Light and Dark mode"
+            app:summary="@string/switch_dark"
             app:title="@string/dark_mode" />
 
         <ListPreference
@@ -26,14 +26,14 @@
             app:title="@string/navBar"
             app:entries="@array/colors"
             app:entryValues="@array/colors"
-            app:summary="Change your navigation bar's color"/>
+            app:summary="@string/change_nav"/>
 
         <ListPreference
             app:key="color2"
             app:title="@string/statBar"
             app:entries="@array/colors"
             app:entryValues="@array/colors"
-            app:summary="Customize your status bar's color"/>
+            app:summary="@string/change_status"/>
 
     </PreferenceCategory>
     <PreferenceCategory app:title="About us">
@@ -41,12 +41,12 @@
         <Preference
             app:key="bitbucket"
             app:title="@string/bitBucket"
-            app:summary="Come look at our BitBucket commits"/>
+            app:summary="@string/bitBucket_commits"/>
 
         <Preference
             app:key="jira"
             app:title="@string/Jira"
-            app:summary="Inspect our Jira Issues"/>
+            app:summary="@string/Jira_issues"/>
 
     </PreferenceCategory>
 
