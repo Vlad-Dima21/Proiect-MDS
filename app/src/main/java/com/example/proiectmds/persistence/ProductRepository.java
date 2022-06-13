@@ -63,4 +63,8 @@ public class ProductRepository implements GenericRepository<Product> {
     public int getSize() {
         return products.size();
     }
+
+    public List<Product> getAll() {
+        return new ArrayList<>(products);
+    }
 }
