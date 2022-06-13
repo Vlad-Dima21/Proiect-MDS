@@ -7,6 +7,18 @@ import com.example.proiectmds.persistence.ClientRepository;
 public class ClientService {
     private ClientRepository clientRepository = new ClientRepository();
 
+    public boolean checkMail(String email)
+    {
+        for (Client client : clientRepository.getAll())
+        {
+            if (client.getEmail().equals(email))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Client loginClient(String email, String password) {
         /**
          * Search for the client with given credentials.
@@ -40,5 +52,24 @@ public class ClientService {
             }
         }
         return false;
+    }
+
+    public void updateCredentials(String email, String password,int idClient)
+    {
+        Client client = clientRepository.get(idClient);
+        if (client != null)
+        {
+            clientRepository.get(idClient).setEmail(email);
+            clientRepository.get(idClient).setPassword(password);
+        }
+    }
+
+    public int idByEmail(String email) {
+        for (Client client : clientRepository.getAll())
+        {
+            if (client.getEmail().equals(email))
+                return client.getId();
+        }
+        return -1;
     }
 }

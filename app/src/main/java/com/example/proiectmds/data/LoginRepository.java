@@ -1,5 +1,7 @@
 package com.example.proiectmds.data;
 
+import android.app.AlertDialog;
+
 import com.example.proiectmds.data.model.LoggedInUser;
 
 /**
@@ -54,6 +56,7 @@ public class LoginRepository {
         if (result instanceof Result.Success) {
             setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
         }
+
         return result;
     }
 }
