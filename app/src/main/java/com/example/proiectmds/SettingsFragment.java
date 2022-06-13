@@ -109,5 +109,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         SharedPreferences prefs = getPreferenceManager().getSharedPreferences();
         prefs.registerOnSharedPreferenceChangeListener(listener);
+
+
     }
 }
