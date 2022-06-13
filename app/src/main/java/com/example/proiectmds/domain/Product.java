@@ -1,14 +1,11 @@
 package com.example.proiectmds.domain;
 
-import java.util.List;
-
 public abstract class Product {
     private final int id;
     private static int idCounter;
 
     protected String name;
     protected double price;
-    protected int remainingStock;
     protected int monthlyStock;
 
     static {
@@ -23,7 +20,6 @@ public abstract class Product {
         this.name = name;
         this.price = price;
         this.monthlyStock = monthlyStock;
-        this.remainingStock = monthlyStock;
     }
 
     public String getName() {
@@ -36,13 +32,5 @@ public abstract class Product {
 
     public int getId() {
         return id;
-    }
-
-    public void stockDecrease() {
-        this.remainingStock--;
-    }
-
-    public void restock() {
-        this.remainingStock = this.monthlyStock;
     }
 }

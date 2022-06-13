@@ -23,77 +23,85 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.proiectmds.services.ClientService;
+
 import java.util.Objects;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    private SharedPreferences.OnSharedPreferenceChangeListener listener;
+    private SharedPreferences.OnSharedPreferenceChangeListener listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+            if (key.equals("dark"))
+            {
+                boolean switchPref = sharedPreferences.getBoolean(SettingsActivity.DARK_SWITCH,false);
+                if (switchPref)
+                {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }
+                else
+                {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+            if (key.equals("color"))
+            {
+                if (isAdded()) {
+                    String color = sharedPreferences.getString("color", "");
+                    Window window = requireActivity().getWindow();
+                    switch (color) {
+                        case "Blue":
+                            window.setNavigationBarColor(Color.rgb(116, 169, 219));
+                            break;
+                        case "Green":
+                            window.setNavigationBarColor(Color.rgb(142, 240, 137));
+                            break;
+                        case "Black":
+                            window.setNavigationBarColor(Color.BLACK);
+                            break;
+                        case "Gray":
+                            window.setNavigationBarColor(Color.rgb(184, 184, 184));
+                            break;
+
+                    }
+                }
+            }
+            if (key.equals("color2"))
+            {
+                if (isAdded()) {
+                    String color = sharedPreferences.getString("color2", "");
+                    Window window = requireActivity().getWindow();
+                    switch (color) {
+                        case "Blue":
+                            window.setStatusBarColor(Color.rgb(116, 169, 219));
+                            break;
+                        case "Green":
+                            window.setStatusBarColor(Color.rgb(142, 240, 137));
+                            break;
+                        case "Black":
+                            window.setStatusBarColor(Color.BLACK);
+                            break;
+                        case "Gray":
+                            window.setStatusBarColor(Color.rgb(184, 184, 184));
+                            break;
+                    }
+                }
+            }
+            if (key.equals("password") || (key.equals("email")))
+            {
+                ClientService clientService = new ClientService();
+                String email = sharedPreferences.getString("email","");
+                String password = sharedPreferences.getString("password","");
+                int id = clientService.idByEmail(email);
+                clientService.updateCredentials(email,password,id);
+            }
+        }
+    };
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
-
-        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                if (key.equals("dark"))
-                {
-                    boolean switchPref = sharedPreferences.getBoolean(SettingsActivity.DARK_SWITCH,false);
-                    if (switchPref)
-                    {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    }
-                    else
-                    {
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                    }
-                }
-                if (key.equals("color"))
-                {
-                    if (isAdded()) {
-                        String color = sharedPreferences.getString("color", "");
-                        Window window = requireActivity().getWindow();
-                        switch (color) {
-                            case "Blue":
-                                window.setNavigationBarColor(Color.rgb(116, 169, 219));
-                                break;
-                            case "Green":
-                                window.setNavigationBarColor(Color.rgb(142, 240, 137));
-                                break;
-                            case "Black":
-                                window.setNavigationBarColor(Color.BLACK);
-                                break;
-                            case "Gray":
-                                window.setNavigationBarColor(Color.rgb(184, 184, 184));
-                                break;
-
-                        }
-                    }
-                }
-                if (key.equals("color2"))
-                {
-                    if (isAdded()) {
-                        String color = sharedPreferences.getString("color2", "");
-                        Window window = requireActivity().getWindow();
-                        switch (color) {
-                            case "Blue":
-                                window.setStatusBarColor(Color.rgb(116, 169, 219));
-                                break;
-                            case "Green":
-                                window.setStatusBarColor(Color.rgb(142, 240, 137));
-                                break;
-                            case "Black":
-                                window.setStatusBarColor(Color.BLACK);
-                                break;
-                            case "Gray":
-                                window.setStatusBarColor(Color.rgb(184, 184, 184));
-                                break;
-                        }
-                    }
-                }
-            }
-        };
 
         findPreference("bitbucket").setOnPreferenceClickListener(preference -> {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bitbucket.org/iliecristian1/proiect-mds"));

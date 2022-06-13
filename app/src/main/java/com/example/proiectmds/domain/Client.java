@@ -4,11 +4,8 @@ public class Client {
     private final int id;
     private static int idCounter;
 
-    private String firstName;
-    private String lastName;
     private String email;
-    private String phoneNumber;
-    private String dateOfBirth;
+    private String password;
     private Client linkedClient;
 
     static {
@@ -19,12 +16,9 @@ public class Client {
         id = ++idCounter;
     }
 
-    public Client(String firstName, String lastName, String email, String phoneNumber, String dateOfBirth) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Client(String email, String password) {
         this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.dateOfBirth = dateOfBirth;
+        this.password = password;
     }
 
     public int getId() {
@@ -37,5 +31,21 @@ public class Client {
 
     public Client getLinkedClient() {
         return linkedClient;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
