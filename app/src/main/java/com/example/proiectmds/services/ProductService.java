@@ -60,6 +60,12 @@ public class ProductService {
 
         HashMap<String, Integer> managerHash = productSalesForManagers.get(managerId);
 
+        double totalProductsBought = 0;
+
+        for (int i : managerHash.values()) {
+            totalProductsBought += i;
+        }
+
         for (Map.Entry<String, Integer> entry : managerHash.entrySet()) {
             if (maxEntry1 == null || entry.getValue() > maxEntry1.getValue()) {
                 maxEntry3 = maxEntry2;
@@ -77,19 +83,19 @@ public class ProductService {
 
         if (maxEntry1 != null) {
             bsp[0] = new ProductTuple(productRepository.getByName(maxEntry1.getKey()),
-                    maxEntry1.getValue());
+                    maxEntry1.getValue() / totalProductsBought * 100);
         } else {
             return bsp;
         }
         if (maxEntry2 != null) {
             bsp[1] = new ProductTuple(productRepository.getByName(maxEntry2.getKey()),
-                    maxEntry2.getValue());
+                    maxEntry1.getValue() / totalProductsBought * 100);
         } else {
             return bsp;
         }
         if (maxEntry3 != null) {
             bsp[2] = new ProductTuple(productRepository.getByName(maxEntry3.getKey()),
-                    maxEntry3.getValue());
+                    maxEntry1.getValue() / totalProductsBought * 100);
         } else {
             return bsp;
         }
