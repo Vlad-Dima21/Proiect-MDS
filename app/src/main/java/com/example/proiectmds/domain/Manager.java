@@ -1,12 +1,12 @@
 package com.example.proiectmds.domain;
 
-public class Client {
+public class Manager {
     private final int id;
     private static int idCounter;
 
     private String email;
     private String password;
-    private Client linkedClient;
+    private String location;
 
     static {
         idCounter = 0;
@@ -16,20 +16,14 @@ public class Client {
         id = ++idCounter;
     }
 
-    public Client(String email, String password) {
+    public Manager(String email, String password, String location) {
         this.email = email;
+        this.password = password;
+        this.location = location;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setLinkedClient(Client linkedClient) {
-        this.linkedClient = linkedClient;
-    }
-
-    public Client getLinkedClient() {
-        return linkedClient;
     }
 
     public String getEmail() {
@@ -38,6 +32,10 @@ public class Client {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public void setEmail(String email) {

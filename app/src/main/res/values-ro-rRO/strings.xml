@@ -14,4 +14,9 @@
     <string name="dark_mode">Modul de noapte</string>
     <string name="navBar">Bară de navigare</string>
     <string name="statBar">Bară de status</string>
+    <string name="menu_budget">Buget</string>
+    <string name="budget2">Buget</string>
+    <string name="budget">Buget</string>
+    <string name="spending">Cheltuire</string>
+    <string name="organize_budget">Aici iti poti organiza bugetul</string>
 </resources>
