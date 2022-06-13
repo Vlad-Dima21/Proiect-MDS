@@ -31,4 +31,14 @@ public class ClientService {
         clientRepository.add(client);
         return client;
     }
+
+    public boolean addLinkedAccount(Client partnerAccount, String emailOfMainAccount) {
+        for (Client client : clientRepository.getAll()) {
+            if (client.getEmail().equals(emailOfMainAccount)) {
+                client.setLinkedClient(partnerAccount);
+                return true;
+            }
+        }
+        return false;
+    }
 }
