@@ -10,7 +10,6 @@
     <string name="theme">Temă</string>
     <string name="color">Culoarea barei de stare</string>
     <string name="email">Email-ul personal</string>
-    <string name="username">Numele de utilizator</string>
     <string name="dark_mode">Modul de noapte</string>
     <string name="navBar">Bară de navigare</string>
     <string name="statBar">Bară de status</string>
@@ -19,4 +18,17 @@
     <string name="budget">Buget</string>
     <string name="spending">Cheltuire</string>
     <string name="organize_budget">Aici iti poti organiza bugetul</string>
+    <string name="username">Parola</string>
+    <string name="title_activity_login">Autentificare</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Parola</string>
+    <string name="invalid_username">Username invalid</string>
+    <string name="invalid_password">Parola trebuie sa aiba minim 5 caractere</string>
+    <string name="login_failed">Logare esuata</string>
+    <string name="switch_dark">Schimba intre modul de noapte si zi</string>
+    <string name="change_nav">Coloreaza-ti diferit bara de navigare</string>
+    <string name="change_status">Customizeaza-ti bara de status</string>
+    <string name="bitBucket_commits">Aici ne poti vedea commiturile de pe BitBucket</string>
+    <string name="action_sign_in">Logare sau Inregistrare</string>
+    <string name="Jira_issues">Inspecteaza-ne Issue-urile de pe Jira</string>
 </resources>

@@ -19,4 +19,16 @@
     <string name="budget2">Budget</string>
     <string name="menu_budget">Budget</string>
     <string name="organize_budget">Cela vous aide à organiser votre budget</string>
+    <string name="title_activity_login">Connexion</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="invalid_username">Nom d\'utilisateur non valide</string>
+    <string name="invalid_password">Le mot de passe doit contenir plus de 5 caractères</string>
+    <string name="login_failed">Échec de la connexion</string>
+    <string name="switch_dark">Bascule entre les modes Lumière et Nuit</string>
+    <string name="change_nav">Changer la couleur de votre barre de navigation</string>
+    <string name="change_status">Personnalisez la couleur de votre barre d\'état</string>
+    <string name="bitBucket_commits">Venez voir nos commits BitBucket</string>
+    <string name="Jira_issues">Inspectez nos problèmes Jira</string>
+    <string name="action_sign_in">Connexion ou Inscription</string>
 </resources>

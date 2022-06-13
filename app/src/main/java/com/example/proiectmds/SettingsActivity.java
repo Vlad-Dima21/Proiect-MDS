@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -15,6 +17,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -67,4 +71,5 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }

@@ -38,4 +38,15 @@ public class ManagerService {
 
         return listOfProductIds;
     }
+
+    public boolean checkMail(String username) {
+        for (Manager client : managerRepository.getAll())
+        {
+            if (client.getEmail().equals(username))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.view.Window;
+import android.widget.TextView;
 
+import com.example.proiectmds.data.LoginRepository;
+import com.example.proiectmds.domain.Client;
 import com.example.proiectmds.services.ProductService;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -40,13 +43,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -59,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false);
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
         boolean switchDark = prefs.getBoolean("dark",false);
         if (switchDark)
         {
@@ -102,6 +98,30 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+        Bundle bundle = getIntent().getExtras();
+        String user = bundle.getString("user");
+        String password = bundle.getString("pass");
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("email",user);
+        editor.putString("password",password);
+        editor.commit();
+
+        NavigationView navigationViewNav = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationViewNav.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.textView);
+        navUsername.setText(prefs.getString("email",""));
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        NavigationView navigationViewNav = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationViewNav.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.textView);
+        navUsername.setText(prefs.getString("email",""));
     }
 
     @Override
