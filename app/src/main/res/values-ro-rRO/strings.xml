@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Proiect MDS</string>
+    <string name="menu_gallery">Galerie</string>
+    <string name="menu_slideshow">Prezentare</string>
+    <string name="title_activity_settings">Setări</string>
+    <string name="action_settings">Setări</string>
+    <string name="menu_home">Acasă</string>
+    <string name="user_settings">Cont</string>
+    <string name="theme">Temă</string>
+    <string name="color">Culoarea barei de stare</string>
+    <string name="email">Email-ul personal</string>
+    <string name="username">Numele de utilizator</string>
+    <string name="dark_mode">Modul de noapte</string>
+    <string name="navBar">Bară de navigare</string>
+    <string name="statBar">Bară de status</string>
+</resources>

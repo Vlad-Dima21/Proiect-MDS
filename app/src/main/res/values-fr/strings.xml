@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Proiect MDS</string>
+    <string name="action_settings">Réglages</string>
+    <string name="title_activity_settings">Réglages</string>
+    <string name="menu_home">Page d\'accueil</string>
+    <string name="menu_gallery">Galerie</string>
+    <string name="menu_slideshow">Diaporama</string>
+    <string name="user_settings">Compte</string>
+    <string name="theme">Thème</string>
+    <string name="color">Couleur de la barre d\'état</string>
+    <string name="username">Votre nom d\'utilisateur</string>
+    <string name="email">Votre email</string>
+    <string name="dark_mode">Mode nuit</string>
+    <string name="navBar">Barre de navigation</string>
+    <string name="statBar">Barre d\'état</string>
+</resources>
