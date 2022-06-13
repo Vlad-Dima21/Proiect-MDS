@@ -4,6 +4,10 @@ import com.example.proiectmds.domain.Client;
 import com.example.proiectmds.domain.Manager;
 import com.example.proiectmds.persistence.ManagerRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class ManagerService {
     private ManagerRepository managerRepository = new ManagerRepository();
 
@@ -17,5 +21,21 @@ public class ManagerService {
                 return manager;
         }
         return null;
+    }
+
+    public String locationOfManager(int managerId) {
+        return managerRepository.get(managerId).getLocation();
+    }
+
+    public List<Integer> getListOfProductsInStock(int managerId) {
+        List<Integer> listOfProductIds = new ArrayList<>();
+
+        for (Map.Entry<Integer, Integer> entry : managerRepository.get(managerId).getStocProduse().entrySet()) {
+            if (entry.getValue() > 0) {
+                listOfProductIds.add(entry.getKey());
+            }
+        }
+
+        return listOfProductIds;
     }
 }

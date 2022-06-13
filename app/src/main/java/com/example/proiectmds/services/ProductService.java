@@ -6,6 +6,7 @@ import com.example.proiectmds.domain.Food;
 import com.example.proiectmds.domain.PersonalCareProduct;
 import com.example.proiectmds.domain.Product;
 import com.example.proiectmds.helpers.ProductTuple;
+import com.example.proiectmds.persistence.ManagerRepository;
 import com.example.proiectmds.persistence.ProductRepository;
 
 import java.util.ArrayList;
@@ -37,6 +38,10 @@ public class ProductService {
      */
     public Product selectProductById(int clientId, int managerId, int productId) {
         Product product = productRepository.get(productId);
+        ManagerRepository managerRepository = new ManagerRepository();
+
+        managerRepository.get(managerId).getStocProduse().put(productId, managerRepository.get(managerId).getStocProduse().get(managerId) - 1);
+
         HashMap<String, Integer> clientHash = productSalesForClients.get(clientId);
         clientHash.merge(product.getName(), 1, Integer::sum);
 
