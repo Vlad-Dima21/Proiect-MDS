@@ -18,6 +18,7 @@ public class Client {
 
     public Client(String email, String password) {
         this.email = email;
+        this.password = password;
     }
 
     public int getId() {
