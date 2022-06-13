@@ -35,7 +35,6 @@
             app:entryValues="@array/colors"
             app:summary="Customize your status bar's color"/>
 
-
     </PreferenceCategory>
     <PreferenceCategory app:title="About us">
 
