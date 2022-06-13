@@ -12,6 +12,7 @@ public class Manager {
     private String password;
     private String location;
     private HashMap<Integer, Integer> stocProduse;
+    private int numberOfVisits;
 
     static {
         idCounter = 0;
@@ -29,6 +30,7 @@ public class Manager {
         for (Product product : new ProductRepository().getAll()) {
             stocProduse.put(product.getId(), product.monthlyStock);
         }
+        this.numberOfVisits = 0;
     }
 
     public int getId() {
@@ -57,5 +59,12 @@ public class Manager {
 
     public HashMap<Integer, Integer> getStocProduse() {
         return stocProduse;
+    }
+
+    /**
+     * Use this function to increase the number of visits when the store is chosen
+     */
+    public void increaseNumberOfVisits() {
+        numberOfVisits++;
     }
 }
