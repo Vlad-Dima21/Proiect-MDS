@@ -39,7 +39,9 @@ public class ProductUnitTest {
         test.selectProductById(clinetId, managerId, leastProductId);
 
         ProductTuple[] productTuples = test.bestSellingProducts(managerId);
-        assertEquals((double) 75, productTuples[0].percentage, 1e-15);
+        assertEquals(3 * 5.99 / (3 * 5.99 + 3.99) * 100, productTuples[0].percentage, 1e-15);
+        assertEquals(3.99 / (3 * 5.99 + 3.99) * 100, productTuples[1].percentage, 1e-15);
+        assertEquals(productTuples[2], null);
     }
 
     @Test
