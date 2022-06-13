@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.proiectmds.R;
 import com.example.proiectmds.databinding.FragmentBudgetBinding;
 
 public class BudgetFragment extends Fragment {
@@ -18,18 +19,13 @@ public class BudgetFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        BudgetViewModel budgetViewModel =
-                new ViewModelProvider(this).get(BudgetViewModel.class);
 
         binding = FragmentBudgetBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textBudget;
-        budgetViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
-
-
 
 
     @Override

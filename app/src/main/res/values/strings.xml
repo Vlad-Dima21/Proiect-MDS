@@ -38,4 +38,6 @@
     <string name="budget2">Budget</string>
     <string name="budget">Budget</string>
     <string name="spending">Spending</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="organize_budget">This helps your organize your budget</string>
 </resources>

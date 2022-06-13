@@ -14,4 +14,9 @@
     <string name="dark_mode">Mode nuit</string>
     <string name="navBar">Barre de navigation</string>
     <string name="statBar">Barre d\'état</string>
+    <string name="spending">Dépenses</string>
+    <string name="budget">Budget</string>
+    <string name="budget2">Budget</string>
+    <string name="menu_budget">Budget</string>
+    <string name="organize_budget">Cela vous aide à organiser votre budget</string>
 </resources>
