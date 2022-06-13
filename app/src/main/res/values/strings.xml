@@ -20,7 +20,7 @@
     <string name="color">Status Bar Color</string>
 
     <!-- Messages Preferences -->
-    <string name="username">Your username</string>
+    <string name="username">Your password</string>
     <string name="email">Your email</string>
     <string name="reply_title" translatable="false">Default reply action</string>
 
@@ -40,4 +40,18 @@
     <string name="spending">Spending</string>
     <string name="menu_gallery">Gallery</string>
     <string name="organize_budget">This helps your organize your budget</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short" translatable="false">Sign in</string>
+    <string name="welcome" translatable="false">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="switch_dark">Switches between Light and Dark mode</string>
+    <string name="change_nav">Change your navigation bar\'s color</string>
+    <string name="change_status">Customize your status bar\'s color</string>
+    <string name="bitBucket_commits">Come look at our BitBucket commits</string>
+    <string name="Jira_issues">Inspect our Jira Issues</string>
 </resources>
