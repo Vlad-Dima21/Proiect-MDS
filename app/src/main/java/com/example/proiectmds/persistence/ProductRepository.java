@@ -2,6 +2,7 @@ package com.example.proiectmds.persistence;
 
 import com.example.proiectmds.domain.Beverage;
 import com.example.proiectmds.domain.Food;
+import com.example.proiectmds.domain.PersonalCareProduct;
 import com.example.proiectmds.domain.Product;
 
 import java.util.ArrayList;
@@ -15,6 +16,13 @@ public class ProductRepository implements GenericRepository<Product> {
         products.add(new Beverage("Coca-Cola", 5.99, 100, 500));
         products.add(new Beverage("Bere blonda Tuborg", 3.99, 100, 300));
         products.add(new Food("Chipsuri Lays cu sare", 6, 50, 140));
+        products.add(new PersonalCareProduct("Gel de dus Palmolive", 22.9, 100));
+        products.add(new PersonalCareProduct("Crema epilatoare", 22.9, 100));
+        products.add(new Food("Soia boabe", 10.59, 90, 400));
+        products.add(new Food("Burger de vita", 33.55, 50, 300));
+        products.add(new Beverage("Apa minerala necarbogazoasa", 2.93, 200, 2000));
+        products.add(new Food("Ciocolata cu alune Poiana", 3.12, 100, 90));
+        products.add(new Food("Guma 5", 5.82, 100, 31));
     }
 
     @Override

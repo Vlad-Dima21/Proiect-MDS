@@ -7,6 +7,7 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String phoneNumber;
     private String dateOfBirth;
     private Client linkedClient;
@@ -37,5 +38,13 @@ public class Client {
 
     public Client getLinkedClient() {
         return linkedClient;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
