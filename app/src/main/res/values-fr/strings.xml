@@ -31,4 +31,5 @@
     <string name="bitBucket_commits">Venez voir nos commits BitBucket</string>
     <string name="Jira_issues">Inspectez nos problèmes Jira</string>
     <string name="action_sign_in">Connexion ou Inscription</string>
+    <string name="choose_location">Choisissez l\'emplacement</string>
 </resources>

@@ -23,8 +23,8 @@ public class ManagerService {
         return null;
     }
 
-    public String locationOfManager(int managerId) {
-        return managerRepository.get(managerId).getLocation();
+    public List<Manager> getAllManagers() {
+        return managerRepository.getAll();
     }
 
     public List<Integer> getListOfProductsInStock(int managerId) {
