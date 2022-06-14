@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private ArrayAdapter<String> listViewAdapter;
     private Manager chosenManager = null;
-//    private List<Product>
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class HomeFragment extends Fragment {
         TextView textView = view.findViewById(R.id.textViewChooseLocation);
 
         Button buyButton = view.findViewById(R.id.button);
+        Button cancelButton = view.findViewById(R.id.cancel_button);
 
         List<Product> basket = new ArrayList<>();
 
@@ -88,7 +90,7 @@ public class HomeFragment extends Fragment {
                     String[] nameAndPriceOfProduct = managerService.getListOfProductsInStock(chosenManager.getId()).
                             stream()
                             .map(p -> getActivity().getString(R.string.product_name) + ": " +
-                                    p.getName() +'\n'+ getActivity().getString(R.string.product_price) + p.getPrice())
+                                    p.getName() +'\n'+ getActivity().getString(R.string.product_price) + ": " + p.getPrice())
                             .toArray(String[]::new);
                     listViewAdapter = new ArrayAdapter<String>(
                             getActivity(),
@@ -97,6 +99,7 @@ public class HomeFragment extends Fragment {
                     );
                     listView.setAdapter(listViewAdapter);
                     buyButton.setVisibility(Button.VISIBLE);
+                    cancelButton.setVisibility(Button.VISIBLE);
                 }
                 else {
                     basket.add(new ManagerService().getListOfProductsInStock(chosenManager.getId()).
@@ -109,27 +112,40 @@ public class HomeFragment extends Fragment {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double total = 0;
-                ProductService productService = new ProductService();
-                for (Product product : basket) {
-                    productService.selectProductById(clientId, chosenManager.getId(), product.getId());
-                    total += product.getPrice();
+                if (!basket.isEmpty()) {
+                    double total = 0;
+                    ProductService productService = new ProductService();
+                    for (Product product : basket) {
+                        productService.selectProductById(clientId, chosenManager.getId(), product.getId());
+                        total += product.getPrice();
+                    }
+                    View budgetView = inflater.inflate(R.layout.fragment_budget, container, false);
+                    double budget = BudgetFragment.getBudget();
+                    double spending = BudgetFragment.getSpending();
+
+                    if (budget - spending - total < 0) {
+                        Toast.makeText(getActivity(), getActivity().getString(R.string.insufficient_funds), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    basket.clear();
+                    buyButton.setText(getActivity().getString(R.string.buy));
+                    DecimalFormat df = new DecimalFormat();
+                    df.setMaximumFractionDigits(2);
+                    Toast.makeText(getActivity(), getActivity().getString(R.string.purhcase_made) +
+                            "\n" + df.format(total) + " RON", Toast.LENGTH_SHORT).show();
+
+                    spending += total;
+                    BudgetFragment.setSpending(spending);
                 }
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 basket.clear();
                 buyButton.setText(getActivity().getString(R.string.buy));
-                DecimalFormat df = new DecimalFormat();
-                df.setMaximumFractionDigits(2);
-                Toast.makeText(getActivity(), getActivity().getString(R.string.purhcase_made) +
-                        "\n" + df.format(total) + " RON", Toast.LENGTH_SHORT).show();
-
-                View budgetView = inflater.inflate(R.layout.fragment_budget, container, false);
-//                String textView1 = ((TextView) budgetView.findViewById(R.id.Spending)).getText().toString();
-//                double spending = Double.parseDouble(textView1) + total;
-//                ((TextView) budgetView.findViewById(R.id.Spending)).setText(String.valueOf(spending));
-//                System.out.println(((TextView) budgetView.findViewById(R.id.Spending)).getText());
-                double spending = BudgetFragment.getSpending();
-                spending += total;
-                BudgetFragment.setSpending(spending);
             }
         });
 

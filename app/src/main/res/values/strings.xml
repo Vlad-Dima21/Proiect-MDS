@@ -61,4 +61,6 @@
     <string name="select_image">Select image</string>
     <string name="buy">Buy</string>
     <string name="purhcase_made">Purchase made</string>
+    <string name="cancel_buy">Cancel</string>
+    <string name="insufficient_funds">Insufficient funds</string>
 </resources>

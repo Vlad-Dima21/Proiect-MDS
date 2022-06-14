@@ -1,10 +1,13 @@
 package com.example.proiectmds.ui.budget;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,7 @@ public class BudgetFragment extends Fragment {
 
     private FragmentBudgetBinding binding;
     private static double spending = 0;
+    private static double budget;
     private View _view;
 
 
@@ -31,7 +35,27 @@ public class BudgetFragment extends Fragment {
         binding = FragmentBudgetBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         final TextView textView1 = binding.textBudget;
-        return root;
+
+        ((EditText) view.findViewById(R.id.Budget)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                nothing
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().equals(""))
+                    return;
+                budget = Double.parseDouble(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+//
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -52,5 +76,9 @@ public class BudgetFragment extends Fragment {
 
     public static double getSpending() {
         return spending;
+    }
+
+    public static double getBudget() {
+        return budget;
     }
 }
