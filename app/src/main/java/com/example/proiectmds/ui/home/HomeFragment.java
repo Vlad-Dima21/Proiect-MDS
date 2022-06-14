@@ -25,6 +25,7 @@ import com.example.proiectmds.domain.Product;
 import com.example.proiectmds.services.ClientService;
 import com.example.proiectmds.services.ManagerService;
 import com.example.proiectmds.services.ProductService;
+import com.example.proiectmds.ui.budget.BudgetFragment;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -120,6 +121,15 @@ public class HomeFragment extends Fragment {
                 df.setMaximumFractionDigits(2);
                 Toast.makeText(getActivity(), getActivity().getString(R.string.purhcase_made) +
                         "\n" + df.format(total) + " RON", Toast.LENGTH_SHORT).show();
+
+                View budgetView = inflater.inflate(R.layout.fragment_budget, container, false);
+//                String textView1 = ((TextView) budgetView.findViewById(R.id.Spending)).getText().toString();
+//                double spending = Double.parseDouble(textView1) + total;
+//                ((TextView) budgetView.findViewById(R.id.Spending)).setText(String.valueOf(spending));
+//                System.out.println(((TextView) budgetView.findViewById(R.id.Spending)).getText());
+                double spending = BudgetFragment.getSpending();
+                spending += total;
+                BudgetFragment.setSpending(spending);
             }
         });
 
@@ -130,5 +140,12 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        chosenManager = null;
     }
 }

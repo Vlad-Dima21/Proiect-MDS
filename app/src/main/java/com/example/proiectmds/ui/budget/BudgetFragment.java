@@ -11,44 +11,26 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.proiectmds.R;
 import com.example.proiectmds.databinding.FragmentBudgetBinding;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class BudgetFragment extends Fragment {
 
     private FragmentBudgetBinding binding;
+    private static double spending = 0;
+    private View _view;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-
-//        BudgetViewModel budgetViewModel =
-//                new ViewModelProvider(this).get(BudgetViewModel.class);
-
+        View view = inflater.inflate(R.layout.fragment_budget, container, false);
+        _view = view;
+        ((TextView)view.findViewById(R.id.Spending)).setText(String.valueOf(spending));
         binding = FragmentBudgetBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final Button btn = binding.btnSpending;
-        final TextView textView = binding.textBudget;
-        btn.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                int a = Integer.parseInt(binding.Budget.getText().toString());
-                int b = Integer.parseInt(binding.Spending.getText().toString());
-                int diff = a - b;
-                if (diff < 0)
-                {
-                    Snackbar.make(view, "Budget cannot be lower than 0", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }
-                else
-                {
-                    binding.Budget.setText(String.valueOf(diff));
-                }
-
-            }
-        });
-//        budgetViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView1 = binding.textBudget;
         return root;
     }
 
@@ -56,5 +38,19 @@ public class BudgetFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((TextView)_view.findViewById(R.id.Spending)).setText(String.valueOf(spending));
+    }
+
+    public static void setSpending(double _spending) {
+        spending = _spending;
+    }
+
+    public static double getSpending() {
+        return spending;
     }
 }
