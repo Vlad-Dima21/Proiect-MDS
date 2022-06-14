@@ -24,7 +24,7 @@ obține diverse informații utile legate de funcționarea magazinelor.
 
 Pentru dezvoltarea aplicatiei noastre ne-am organizat folosind Jira, unde am ne-am folosit de issues.
 
-Acest fapt se poate vedea [aici](https://iliecristian.atlassian.net/jira/software/projects/MDS/boards/).
+Acest fapt se poate vedea [aici](https://iliecristian.atlassian.net/jira/software/projects/MDS/boards/1).
 
 ## 3.UML
 
