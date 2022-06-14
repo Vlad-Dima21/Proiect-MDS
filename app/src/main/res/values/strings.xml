@@ -54,5 +54,6 @@
     <string name="change_status">Customize your status bar\'s color</string>
     <string name="bitBucket_commits">Come look at our BitBucket commits</string>
     <string name="Jira_issues">Inspect our Jira Issues</string>
+    <string name="add_spending">Add Spending</string>
     <string name="choose_location">Choose location</string>
 </resources>
