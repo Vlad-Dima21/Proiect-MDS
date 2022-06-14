@@ -63,4 +63,8 @@
     <string name="purhcase_made">Purchase made</string>
     <string name="cancel_buy">Cancel</string>
     <string name="insufficient_funds">Insufficient funds</string>
+    <string name="menu_statistics">Statistics</string>
+    <string name="no_statistics">No data</string>
+    <string name="favourite_product">Favourite product</string>
+    <string name="most_bought">Most bought items</string>
 </resources>

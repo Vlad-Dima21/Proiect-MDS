@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
         String email = bundle.getString("user");
 
         if (new ManagerService().checkMail(email)) {
+            ((TextView)view.findViewById(R.id.textViewChooseLocation)).setText("You are logged into a manager account.");
             return view;
         }
 

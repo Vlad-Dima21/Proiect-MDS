@@ -31,6 +31,10 @@ public class ProductService {
         productSalesForManagers = IntStream.range(0, 11).
                 mapToObj(HashMap<String, Integer>::new).
                 collect(Collectors.toList());
+
+        for (int i = 0; i < 11; i++) {
+            totalProfit.put(i, 0.0);
+        }
     }
 
     /** this method returns the required product while also

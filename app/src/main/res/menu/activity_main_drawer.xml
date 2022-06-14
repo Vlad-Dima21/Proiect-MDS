@@ -14,5 +14,10 @@
             android:icon="@drawable/ic_baseline_attach_money_24"
             android:title="@string/menu_budget" />
 
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_baseline_analytics_24"
+            android:title="@string/menu_statistics" />
+
     </group>
 </menu>

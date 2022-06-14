@@ -23,7 +23,7 @@ public class BudgetFragment extends Fragment {
 
     private FragmentBudgetBinding binding;
     private static double spending = 0;
-    private static double budget;
+    private static double budget = 100;
     private View _view;
 
 

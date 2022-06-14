@@ -10,8 +10,8 @@ public class ManagerRepository implements GenericRepository<Manager> {
     private static List<Manager> managerList = new ArrayList<>();
 
     static {
-        managerList.add(new Manager("manager1@maga.ro", "217836512", "Bd. Timișoara 17, București"));
-        managerList.add(new Manager("manager2@maga.ro", "18237675312", "Șoseaua Cotroceni 15, București"));
+        managerList.add(new Manager("manager1@maga.ro", "abcdef", "Bd. Timișoara 17, București"));
+        managerList.add(new Manager("manager2@maga.ro", "abcdef", "Șoseaua Cotroceni 15, București"));
     }
 
     @Override

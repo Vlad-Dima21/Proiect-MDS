@@ -1,4 +1,4 @@
-package com.example.proiectmds.ui.slideshow;
+package com.example.proiectmds.ui.statistics;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
