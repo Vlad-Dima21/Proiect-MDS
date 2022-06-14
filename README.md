@@ -29,3 +29,28 @@ Acest fapt se poate vedea [aici](https://iliecristian.atlassian.net/jira/softwar
 ## 3.UML
 
 ## 4.Source Control
+
+## 5.Bug Reporting
+
+
+
+## 6. Testare automata
+
+
+
+## 7. Folosirea unui build tool
+
+Proiectul a fost realizat integral in IDE-ul Android Studio.
+
+## 8. Design patterns
+
+In proiect am utilizat design pattern-ul repository.
+
+## 9. Code standards
+
+Codul proiect are la baza standardele de baza ale limbajului Java.
+
+## 10. Exemple de imagini din aplicatie
+
+
+
