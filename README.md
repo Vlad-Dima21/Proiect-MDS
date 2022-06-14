@@ -4,7 +4,7 @@ Aplicația este creată pentru un lanț de magazine cu scopul de ajuta atât cli
 să își organizeze cumpărăturile și să vadă locațiile magazinelor, căt și managerii să poată
 obține diverse informații utile legate de funcționarea magazinelor.
 
-## User stories
+## 1.User stories
 
  1. Ca utilizator, vreau să îmi pot crea un cont și să mă pot loga în el;
  2. Ca utilizator, vreau ca aplicația să-mi permită să pun limite de buget pentru anumite produse;
@@ -19,3 +19,38 @@ obține diverse informații utile legate de funcționarea magazinelor.
  11. Ca utilizator, vreau să pot să-mi personalizez profilul;
  12. Ca manager, vreau ca utilizatorii să poată vedea ce produse sunt în stoc;
  13. Ca manager, vreau să știu câți clienți au vizitat un anumit magazin;
+
+## 2.Backlog
+
+Pentru dezvoltarea aplicatiei noastre ne-am organizat folosind Jira, unde am ne-am folosit de issues.
+
+Acest fapt se poate vedea [aici](https://iliecristian.atlassian.net/jira/software/projects/MDS/boards/1).
+
+## 3.UML
+
+## 4.Source Control
+
+## 5.Bug Reporting
+
+
+
+## 6. Testare automata
+
+
+
+## 7. Folosirea unui build tool
+
+Proiectul a fost realizat integral in IDE-ul Android Studio.
+
+## 8. Design patterns
+
+In proiect am utilizat design pattern-ul repository.
+
+## 9. Code standards
+
+Codul proiect are la baza standardele de baza ale limbajului Java.
+
+## 10. Exemple de imagini din aplicatie
+
+
+
