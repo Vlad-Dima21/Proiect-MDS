@@ -1,23 +1,35 @@
 package com.example.proiectmds.ui.home;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.PreferenceManager;
 
 import com.example.proiectmds.R;
 import com.example.proiectmds.databinding.FragmentHomeBinding;
+import com.example.proiectmds.domain.Client;
 import com.example.proiectmds.domain.Manager;
+import com.example.proiectmds.domain.Product;
+import com.example.proiectmds.services.ClientService;
 import com.example.proiectmds.services.ManagerService;
+import com.example.proiectmds.services.ProductService;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class HomeFragment extends Fragment {
@@ -25,6 +37,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private ArrayAdapter<String> listViewAdapter;
     private Manager chosenManager = null;
+//    private List<Product>
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +48,15 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Bundle bundle = getActivity().getIntent().getExtras();
+        String email = bundle.getString("user");
+
+        if (new ManagerService().checkMail(email)) {
+            return view;
+        }
+
+        int clientId = new ClientService().idByEmail(email);
 
         String[] locationOfEachManager = new ManagerService().getAllManagers().stream()
                 .map(Manager::getLocation).toArray(String[]::new);
@@ -50,6 +72,10 @@ public class HomeFragment extends Fragment {
         listView.setAdapter(listViewAdapter);
         TextView textView = view.findViewById(R.id.textViewChooseLocation);
 
+        Button buyButton = view.findViewById(R.id.button);
+
+        List<Product> basket = new ArrayList<>();
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -60,7 +86,8 @@ public class HomeFragment extends Fragment {
                     ManagerService managerService = new ManagerService();
                     String[] nameAndPriceOfProduct = managerService.getListOfProductsInStock(chosenManager.getId()).
                             stream()
-                            .map(p -> "Nume: " + p.getName() + "\nPret:" + p.getPrice())
+                            .map(p -> getActivity().getString(R.string.product_name) + ": " +
+                                    p.getName() +'\n'+ getActivity().getString(R.string.product_price) + p.getPrice())
                             .toArray(String[]::new);
                     listViewAdapter = new ArrayAdapter<String>(
                             getActivity(),
@@ -68,8 +95,31 @@ public class HomeFragment extends Fragment {
                             nameAndPriceOfProduct
                     );
                     listView.setAdapter(listViewAdapter);
+                    buyButton.setVisibility(Button.VISIBLE);
                 }
+                else {
+                    basket.add(new ManagerService().getListOfProductsInStock(chosenManager.getId()).
+                            get(position));
+                    buyButton.setText(getActivity().getString(R.string.buy) + "(" + basket.size()+")");
+                }
+            }
+        });
 
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double total = 0;
+                ProductService productService = new ProductService();
+                for (Product product : basket) {
+                    productService.selectProductById(clientId, chosenManager.getId(), product.getId());
+                    total += product.getPrice();
+                }
+                basket.clear();
+                buyButton.setText(getActivity().getString(R.string.buy));
+                DecimalFormat df = new DecimalFormat();
+                df.setMaximumFractionDigits(2);
+                Toast.makeText(getActivity(), getActivity().getString(R.string.purhcase_made) +
+                        "\n" + df.format(total) + " RON", Toast.LENGTH_SHORT).show();
             }
         });
 

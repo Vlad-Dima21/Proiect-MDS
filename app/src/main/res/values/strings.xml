@@ -56,4 +56,9 @@
     <string name="Jira_issues">Inspect our Jira Issues</string>
     <string name="add_spending">Add Spending</string>
     <string name="choose_location">Choose location</string>
+    <string name="product_name">Product name</string>
+    <string name="product_price">Product price</string>
+    <string name="select_image">Select image</string>
+    <string name="buy">Buy</string>
+    <string name="purhcase_made">Purchase made</string>
 </resources>

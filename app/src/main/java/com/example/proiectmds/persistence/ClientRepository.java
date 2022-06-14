@@ -9,9 +9,9 @@ public class ClientRepository implements GenericRepository<Client> {
     private static List<Client> clientList = new ArrayList<>();
 
     static {
-        clientList.add(new Client("email1@cont.ro", "192838123"));
-        clientList.add(new Client("email2.@cont.ro", "897123125"));
-        clientList.add(new Client("email3.@cont.ro", "2918376512"));
+        clientList.add(new Client("email1@cont.ro", "abcdef"));
+        clientList.add(new Client("email2.@cont.ro", "abcdef"));
+        clientList.add(new Client("email3.@cont.ro", "abcdef"));
     }
 
     @Override
