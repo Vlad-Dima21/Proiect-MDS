@@ -2,7 +2,9 @@ package com.example.proiectmds.services;
 
 import com.example.proiectmds.domain.Client;
 import com.example.proiectmds.domain.Manager;
+import com.example.proiectmds.domain.Product;
 import com.example.proiectmds.persistence.ManagerRepository;
+import com.example.proiectmds.persistence.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +29,17 @@ public class ManagerService {
         return managerRepository.getAll();
     }
 
-    public List<Integer> getListOfProductsInStock(int managerId) {
-        List<Integer> listOfProductIds = new ArrayList<>();
+    public List<Product> getListOfProductsInStock(int managerId) {
+        ProductRepository productRepository = new ProductRepository();
+        List<Product> listOfProducs = new ArrayList<>();
 
         for (Map.Entry<Integer, Integer> entry : managerRepository.get(managerId).getStocProduse().entrySet()) {
             if (entry.getValue() > 0) {
-                listOfProductIds.add(entry.getKey());
+                listOfProducs.add(productRepository.get(entry.getKey()));
             }
         }
 
-        return listOfProductIds;
+        return listOfProducs;
     }
 
     public boolean checkMail(String username) {

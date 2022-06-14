@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,8 @@ import java.util.stream.Collectors;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private ArrayAdapter<String> listViewAdapter;
+    private Manager chosenManager = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -36,22 +39,37 @@ public class HomeFragment extends Fragment {
         String[] locationOfEachManager = new ManagerService().getAllManagers().stream()
                 .map(Manager::getLocation).toArray(String[]::new);
 
-        Manager chosenManager = null;
-
         ListView listView = view.findViewById(R.id.listview);
 
-        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<String>(
+        listViewAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
                 locationOfEachManager
         );
 
         listView.setAdapter(listViewAdapter);
+        TextView textView = view.findViewById(R.id.textViewChooseLocation);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println(new ManagerService().getAllManagers().get(position));
+                if (chosenManager == null) {
+                    chosenManager = new ManagerService().getAllManagers().get(position);
+                    textView.setVisibility(TextView.GONE);
+
+                    ManagerService managerService = new ManagerService();
+                    String[] nameAndPriceOfProduct = managerService.getListOfProductsInStock(chosenManager.getId()).
+                            stream()
+                            .map(p -> "Nume: " + p.getName() + "\nPret:" + p.getPrice())
+                            .toArray(String[]::new);
+                    listViewAdapter = new ArrayAdapter<String>(
+                            getActivity(),
+                            android.R.layout.simple_list_item_1,
+                            nameAndPriceOfProduct
+                    );
+                    listView.setAdapter(listViewAdapter);
+                }
+
             }
         });
 
