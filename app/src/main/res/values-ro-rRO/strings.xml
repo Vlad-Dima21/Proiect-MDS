@@ -31,4 +31,6 @@
     <string name="bitBucket_commits">Aici ne poti vedea commiturile de pe BitBucket</string>
     <string name="action_sign_in">Logare sau Inregistrare</string>
     <string name="Jira_issues">Inspecteaza-ne Issue-urile de pe Jira</string>
+    <string name="choose_location">Alege locatia</string>
+    <string name="add_spending">Adaugare cheltuieli</string>
 </resources>
