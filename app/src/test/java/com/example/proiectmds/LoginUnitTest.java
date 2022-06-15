@@ -20,4 +20,13 @@ public class LoginUnitTest {
         assertNull(test.loginClient(loginClient.getEmail() + 'a', loginClient.getPassword()));
         assertNull(test.loginClient(loginClient.getEmail(), loginClient.getPassword() + 'b'));
     }
+
+    @Test
+    public void clientRegisterIsCorrect() {
+        Client clientThatExists = new ClientRepository().get(1);
+        ClientService test = new ClientService();
+
+        assertNotEquals(null, test.registerClient("emailcarenuexista@yahoo.com", "parolasafe"));
+        assertNull(test.registerClient(clientThatExists.getEmail(), clientThatExists.getPassword()));
+    }
 }
