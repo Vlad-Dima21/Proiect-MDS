@@ -7,7 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +25,8 @@ import com.example.proiectmds.helpers.ProductTuple;
 import com.example.proiectmds.services.ClientService;
 import com.example.proiectmds.services.ManagerService;
 import com.example.proiectmds.services.ProductService;
+
+import java.text.DecimalFormat;
 
 public class StatisticsFragment extends Fragment {
 
@@ -41,6 +46,46 @@ public class StatisticsFragment extends Fragment {
         ManagerService managerService = new ManagerService();
 
         Button megaButton = view.findViewById(R.id.statistics_button);
+
+        if (new ClientService().checkMail(email)) {
+            Button partnerButton = view.findViewById(R.id.linked_client_button);
+            partnerButton.setVisibility(Button.VISIBLE);
+
+            partnerButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                    alertDialog.setTitle(getActivity().getString(R.string.title_alert_partner));
+                    alertDialog.setMessage(getActivity().getString(R.string.message_alert_partner));
+
+                    final EditText input = new EditText(getActivity());
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.MATCH_PARENT);
+                    input.setLayoutParams(lp);
+                    alertDialog.setView(input);
+                    alertDialog.setIcon(R.drawable.ic_baseline_group_24);
+
+                    alertDialog.setPositiveButton(getActivity().getString(android.R.string.ok),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String newEmail = input.getText().toString();
+                                    int idOldClient = clientService.idByEmail(email);
+                                    clientService.addPartnerToAccount(idOldClient, newEmail);
+                                }
+                            });
+
+                    alertDialog.setNegativeButton(android.R.string.cancel,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    alertDialog.show();
+                }
+            });
+        }
 
         megaButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,10 +124,12 @@ public class StatisticsFragment extends Fragment {
                     alertMessage += ":\n";
 
                     boolean productExists = false;
+                    DecimalFormat df = new DecimalFormat();
+                    df.setMaximumFractionDigits(2);
                     for (ProductTuple productTuple : products) {
                         if (productTuple != null) {
                             alertMessage += productTuple.product.getName() + " " +
-                                    productTuple.percentage + "%\n";
+                                    df.format(productTuple.percentage) + "%\n";
                             productExists = true;
                         }
                     }

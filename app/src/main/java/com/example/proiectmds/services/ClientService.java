@@ -44,14 +44,13 @@ public class ClientService {
         return client;
     }
 
-    public boolean addLinkedAccount(Client partnerAccount, String emailOfMainAccount) {
+    public Integer idPartnerOf(int clientId) {
         for (Client client : clientRepository.getAll()) {
-            if (client.getEmail().equals(emailOfMainAccount)) {
-                client.setLinkedClient(partnerAccount);
-                return true;
+            if (client.getId() == clientId) {
+                return client.getLinkedClient().getId();
             }
         }
-        return false;
+        return null;
     }
 
     public void updateCredentials(String email, String password,int idClient)
@@ -71,5 +70,11 @@ public class ClientService {
                 return client.getId();
         }
         return -1;
+
+    }
+
+    public void addPartnerToAccount(int idClient, String emailOfPartner) {
+            Client client = clientRepository.get(idClient);
+            client.setLinkedClient(clientRepository.get(idByEmail(emailOfPartner)));
     }
 }

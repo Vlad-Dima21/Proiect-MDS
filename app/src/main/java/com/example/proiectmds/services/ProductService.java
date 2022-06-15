@@ -35,6 +35,15 @@ public class ProductService {
         for (int i = 0; i < 11; i++) {
             totalProfit.put(i, 0.0);
         }
+
+        productSalesForManagers.get(1).put("Coca-Cola", 5);
+        totalProfit.merge(1, 5 * 3.99, Double::sum);
+        productSalesForManagers.get(1).put("Gel de dus Palmolive", 1);
+        totalProfit.merge(1, 1 * 22.9, Double::sum);
+        productSalesForManagers.get(1).put("Ciocolata cu alune Poiana", 3);
+        totalProfit.merge(1, 3 * 3.12, Double::sum);
+        productSalesForManagers.get(1).put("Soia boabe", 10);
+        totalProfit.merge(1, 10 * 10.59, Double::sum);
     }
 
     /** this method returns the required product while also
@@ -54,6 +63,13 @@ public class ProductService {
 
 //        totalProfit += product.getPrice();
         totalProfit.merge(managerId, product.getPrice(), Double::sum);
+        return product;
+    }
+
+    public Product selectProductById(int clientId, int productId) {
+        Product product = productRepository.get(productId);
+        HashMap<String, Integer> clientHash = productSalesForClients.get(clientId);
+        clientHash.merge(product.getName(), 1, Integer::sum);
         return product;
     }
 

@@ -118,6 +118,11 @@ public class HomeFragment extends Fragment {
                     ProductService productService = new ProductService();
                     for (Product product : basket) {
                         productService.selectProductById(clientId, chosenManager.getId(), product.getId());
+                        ClientService clientService = new ClientService();
+                        Integer clientPartnerId = clientService.idPartnerOf(clientId);
+                        if (clientPartnerId != null) {
+                            productService.selectProductById(clientPartnerId, product.getId());
+                        }
                         total += product.getPrice();
                     }
                     View budgetView = inflater.inflate(R.layout.fragment_budget, container, false);

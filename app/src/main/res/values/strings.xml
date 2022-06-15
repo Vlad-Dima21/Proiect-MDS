@@ -67,4 +67,7 @@
     <string name="no_statistics">No data</string>
     <string name="favourite_product">Favourite product</string>
     <string name="most_bought">Most bought items</string>
+    <string name="linked_client_alert">Add Partner Account</string>
+    <string name="title_alert_partner">Link partner</string>
+    <string name="message_alert_partner">Enter email address</string>
 </resources>
