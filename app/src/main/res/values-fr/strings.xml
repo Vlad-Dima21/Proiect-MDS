@@ -33,4 +33,15 @@
     <string name="action_sign_in">Connexion ou Inscription</string>
     <string name="choose_location">Choisissez l\'emplacement</string>
     <string name="add_spending">Ajouter des dépenses</string>
+    <string name="product_name">" Nom du produit"</string>
+    <string name="product_price">Prix ​​du produit</string>
+    <string name="select_image">Sélectionner une image</string>
+    <string name="buy">Acheter</string>
+    <string name="purhcase_made">Achat effectué</string>
+    <string name="cancel_buy">Annuler</string>
+    <string name="insufficient_funds">Fonds insuffisants</string>
+    <string name="menu_statistics">Statistiques</string>
+    <string name="no_statistics">Pas de données</string>
+    <string name="favourite_product">Produit préféré</string>
+    <string name="most_bought">Articles les plus achetés</string>
 </resources>
