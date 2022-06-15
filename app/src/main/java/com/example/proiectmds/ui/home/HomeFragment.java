@@ -86,6 +86,7 @@ public class HomeFragment extends Fragment {
                 if (chosenManager == null) {
                     chosenManager = new ManagerService().getAllManagers().get(position);
                     textView.setVisibility(TextView.GONE);
+                    chosenManager.increaseNumberOfVisits();
 
                     ManagerService managerService = new ManagerService();
                     String[] nameAndPriceOfProduct = managerService.getListOfProductsInStock(chosenManager.getId()).

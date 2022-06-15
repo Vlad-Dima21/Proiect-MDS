@@ -27,6 +27,7 @@ import com.example.proiectmds.services.ManagerService;
 import com.example.proiectmds.services.ProductService;
 
 import java.text.DecimalFormat;
+import java.util.stream.Collectors;
 
 public class StatisticsFragment extends Fragment {
 
@@ -83,6 +84,32 @@ public class StatisticsFragment extends Fragment {
                             });
 
                     alertDialog.show();
+                }
+            });
+        } else {
+            Button button = view.findViewById(R.id.linked_client_button);
+            button.setVisibility(Button.VISIBLE);
+            button.setText(getActivity().getString(R.string.number_of_visits));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+            String alertMessage = getActivity().getString(R.string.number_of_visits);
+            alertMessage += ": ";
+            Manager manager = new ManagerService().getAllManagers()
+                    .stream()
+                    .filter(m -> m.getEmail().equals(email))
+                    .collect(Collectors.toList()).get(0);
+            alertMessage += String.valueOf(manager.getNumberOfVisits()) + '.';
+            new AlertDialog.Builder(getContext())
+                    .setTitle(getActivity().getString(R.string.number_of_visits))
+                    .setMessage(alertMessage)
+                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .setIcon(R.drawable.ic_outline_storefront_24)
+                    .show();
                 }
             });
         }

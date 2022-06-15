@@ -12,6 +12,8 @@ public class ManagerRepository implements GenericRepository<Manager> {
     static {
         managerList.add(new Manager("manager1@maga.ro", "abcdef", "Bd. Timișoara 17, București"));
         managerList.add(new Manager("manager2@maga.ro", "abcdef", "Șoseaua Cotroceni 15, București"));
+        managerList.get(0).increaseNumberOfVisits();
+        managerList.get(0).increaseNumberOfVisits();
     }
 
     @Override

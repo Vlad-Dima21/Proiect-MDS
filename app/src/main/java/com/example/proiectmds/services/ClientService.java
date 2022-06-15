@@ -46,7 +46,7 @@ public class ClientService {
 
     public Integer idPartnerOf(int clientId) {
         for (Client client : clientRepository.getAll()) {
-            if (client.getId() == clientId) {
+            if (client.getId() == clientId && client.getLinkedClient() != null) {
                 return client.getLinkedClient().getId();
             }
         }

@@ -67,4 +67,8 @@ public class Manager {
     public void increaseNumberOfVisits() {
         numberOfVisits++;
     }
+
+    public int getNumberOfVisits() {
+        return numberOfVisits;
+    }
 }
