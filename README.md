@@ -4,7 +4,7 @@ Aplicația este creată pentru un lanț de magazine cu scopul de ajuta atât cli
 să își organizeze cumpărăturile și să vadă locațiile magazinelor, căt și managerii să poată
 obține diverse informații utile legate de funcționarea magazinelor.
 
-## 1.User stories
+## 1. User stories
 
  1. Ca utilizator, vreau să îmi pot crea un cont și să mă pot loga în el;
  2. Ca utilizator, vreau ca aplicația să-mi permită să pun limite de buget;
@@ -20,19 +20,19 @@ obține diverse informații utile legate de funcționarea magazinelor.
  12. Ca manager, vreau ca utilizatorii să poată vedea ce produse sunt în stoc;
  13. Ca manager, vreau să știu câți clienți au vizitat un anumit magazin;
 
-## 2.Backlog
+## 2. Backlog
 
 Pentru dezvoltarea aplicatiei noastre ne-am organizat folosind Jira, unde am utilizat diverse issues pentru a sti ce era de facut.
 
 Acest fapt se poate vedea [aici](https://iliecristian.atlassian.net/jira/software/projects/MDS/boards/1).
 
-## 3.UML
+## 3. UML
 ![image info](/pictures/UML.png)
-## 4.Source Control
+## 4. Source control
 In timpul dezvoltarii aplicatiei am folosit git si am adaugat mai multe commituri si efectuat merge-uri.
 ![image info](/pictures/git1.png)
 ![image info](/pictures/git2.png)
-## 5.Bug Reporting
+## 5. Bug reporting
 Acesta este un exemplu de bug descoperit si rezolvat.
 ![image info](/pictures/bug.png)
 
