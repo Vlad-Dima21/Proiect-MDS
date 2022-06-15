@@ -33,4 +33,15 @@
     <string name="Jira_issues">Inspecteaza-ne Issue-urile de pe Jira</string>
     <string name="choose_location">Alege locatia</string>
     <string name="add_spending">Adaugare cheltuieli</string>
+    <string name="product_name">Nume produs</string>
+    <string name="product_price">Pret produs</string>
+    <string name="select_image">Selecteaza o imagine</string>
+    <string name="buy">Cumpara</string>
+    <string name="purhcase_made">Comanda efectuata</string>
+    <string name="cancel_buy">Anulare</string>
+    <string name="insufficient_funds">Fonduri insuficiente</string>
+    <string name="menu_statistics">Statistici</string>
+    <string name="no_statistics">Nu exista date</string>
+    <string name="favourite_product">Produs favorit</string>
+    <string name="most_bought">Cele mai cumparate produse</string>
 </resources>
