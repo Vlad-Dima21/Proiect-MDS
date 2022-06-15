@@ -27,7 +27,7 @@ Pentru dezvoltarea aplicatiei noastre ne-am organizat folosind Jira, unde am ne-
 Acest fapt se poate vedea [aici](https://iliecristian.atlassian.net/jira/software/projects/MDS/boards/1).
 
 ## 3.UML
-
+![image info](./pictures/MDS v4.pdf)
 ## 4.Source Control
 
 ## 5.Bug Reporting
