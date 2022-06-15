@@ -44,4 +44,8 @@
     <string name="no_statistics">Nu exista date</string>
     <string name="favourite_product">Produs favorit</string>
     <string name="most_bought">Cele mai cumparate produse</string>
+    <string name="linked_client_alert">Adauga partener</string>
+    <string name="title_alert_partner">Asociaza partener</string>
+    <string name="message_alert_partner">Introdu adresa de email</string>
+    <string name="number_of_visits">Numarul de vizite</string>
 </resources>

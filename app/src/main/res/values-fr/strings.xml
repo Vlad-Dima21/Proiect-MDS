@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Proiect MDS</string>
+    <string name="app_name">ShopVille</string>
     <string name="action_settings">Réglages</string>
     <string name="title_activity_settings">Réglages</string>
     <string name="menu_home">Page d\'accueil</string>
@@ -44,4 +44,8 @@
     <string name="no_statistics">Pas de données</string>
     <string name="favourite_product">Produit préféré</string>
     <string name="most_bought">Articles les plus achetés</string>
+    <string name="linked_client_alert">Ajouter un compte partenaire</string>
+    <string name="title_alert_partner">Partenaire de liaison</string>
+    <string name="message_alert_partner">Entrer l\'adresse e-mail</string>
+    <string name="number_of_visits">Nombre de visites</string>
 </resources>
