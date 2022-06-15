@@ -50,6 +50,7 @@ Proiectul a fost realizat integral in IDE-ul Android Studio.
 ## 8. Design patterns
 
 In proiect am utilizat design patternul repository, acesta fiind necesar pentru dezvoltarea back-endului.
+
 ![image info](/pictures/repository.png)
 ## 9. Code standards
 
